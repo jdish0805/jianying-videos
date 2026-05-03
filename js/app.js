@@ -1,5 +1,5 @@
 // ===== 课程数据 =====
-const BASE_VIDEO_URL = 'https://cdn.jsdelivr.net/gh/jdish0805/jianying-videos@vv.0/videos/';
+const BASE_VIDEO_URL = 'https://ghproxy.com/https://github.com/jdish0805/jianying-videos/releases/download/vv.0/';
 
 const chapters = [
   {
