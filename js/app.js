@@ -1,5 +1,5 @@
 // ===== 课程数据 =====
-const BASE_VIDEO_URL = 'https://pd.zwc365.com/https://github.com/jdish0805/jianying-videos/releases/download/vv.0/';
+const BASE_VIDEO_URL = 'videos/';
 
 const chapters = [
   {
