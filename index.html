@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>剪映零基础入门</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icon.png" type="image/png">
+</head>
+<body>
+
+  <!-- 侧边栏遮罩 -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <!-- 侧边栏 -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <img src="assets/icon.png" alt="Logo">
+      </div>
+      <h2>剪映入门</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">学习</div>
+      <button class="nav-item active" onclick="goHome()">
+        <span class="nav-icon">🏠</span> 课程首页
+      </button>
+      <button class="nav-item" onclick="goToChapter(1)">
+        <span class="nav-icon">1</span> 第1章 · 初识剪映
+      </button>
+      <button class="nav-item" id="navCh2" onclick="goToChapter(2)">
+        <span class="nav-icon">2</span> 第2章 · 让视频好看
+      </button>
+      <button class="nav-item" id="navCh3" onclick="goToChapter(3)">
+        <span class="nav-icon">3</span> 第3章 · 让视频出彩
+      </button>
+      <button class="nav-item" id="navCh4" onclick="goToChapter(4)">
+        <span class="nav-icon">4</span> 第4章 · 实战练习
+      </button>
+
+      <div class="nav-section-title">设置</div>
+      <button class="nav-item" onclick="resetProgress()">
+        <span class="nav-icon">🔄</span> 重置学习进度
+      </button>
+      <button class="nav-item" onclick="toggleSidebar()">
+        <span class="nav-icon">ℹ️</span> 关于本应用
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <img src="assets/icon.png" alt="icon" style="width:20px;vertical-align:middle;margin-right:4px;">剪映零基础入门 v1.0
+    </div>
+  </div>
+
+  <!-- 顶部导航栏 -->
+  <header class="top-bar">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <h1>剪映零基础入门</h1>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+
+    <!-- 欢迎语 -->
+    <div class="welcome">
+      <div class="welcome-logo">
+        <img src="assets/icon.png" alt="剪映入门">
+      </div>
+      <h2>欢迎学习剪映</h2>
+      <p>零基础友好，40分钟掌握剪映核心功能<br>建议按顺序学习，每章学完再进入下一章</p>
+    </div>
+
+    <!-- 学习进度 -->
+    <div class="progress-section">
+      <div class="progress-header">
+        <strong style="font-size:14px;">学习进度</strong>
+        <span id="progressText">0 / 5 章已完成</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- 章节列表 -->
+    <div class="chapter-list">
+
+      <div class="chapter-card" id="card1" onclick="openVideo(1)">
+        <div class="chapter-num">1</div>
+        <div class="chapter-info">
+          <h3>初识剪映</h3>
+          <div class="chapter-meta">
+            <span class="chapter-time">⏱ 约 8 分钟</span>
+            <span class="chapter-badge badge-ready" id="badge1">可学习</span>
+          </div>
+        </div>
+        <span class="chapter-arrow">›</span>
+      </div>
+
+      <div class="chapter-card locked" id="card2" onclick="openVideo(2)">
+        <div class="chapter-num">2</div>
+        <div class="chapter-info">
+          <h3>让视频好看</h3>
+          <div class="chapter-meta">
+            <span class="chapter-time">⏱ 约 10 分钟</span>
+            <span class="chapter-badge badge-locked" id="badge2">未解锁</span>
+          </div>
+        </div>
+        <span class="chapter-arrow">›</span>
+      </div>
+
+      <div class="chapter-card locked" id="card3" onclick="openVideo(3)">
+        <div class="chapter-num">3</div>
+        <div class="chapter-info">
+          <h3>让视频出彩</h3>
+          <div class="chapter-meta">
+            <span class="chapter-time">⏱ 约 12 分钟</span>
+            <span class="chapter-badge badge-locked" id="badge3">未解锁</span>
+          </div>
+        </div>
+        <span class="chapter-arrow">›</span>
+      </div>
+
+      <div class="chapter-card locked" id="card4" onclick="openVideo(4)">
+        <div class="chapter-num">4</div>
+        <div class="chapter-info">
+          <h3>实战练习</h3>
+          <div class="chapter-meta">
+            <span class="chapter-time">⏱ 约 10 分钟</span>
+            <span class="chapter-badge badge-locked" id="badge4">未解锁</span>
+          </div>
+        </div>
+        <span class="chapter-arrow">›</span>
+      </div>
+
+      <div class="chapter-card locked" id="card5" onclick="openVideo(5)">
+        <div class="chapter-num">5</div>
+        <div class="chapter-info">
+          <h3>进阶技巧</h3>
+          <div class="chapter-meta">
+            <span class="chapter-time">⏱ 约 15 分钟</span>
+            <span class="chapter-badge badge-locked" id="badge5">未解锁</span>
+          </div>
+        </div>
+        <span class="chapter-arrow">›</span>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/app.js?v=2" charset="UTF-8"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>课程播放 - 剪映零基础入门</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/icon.png" type="image/png">
+</head>
+<body class="video-page">
+
+  <!-- 侧边栏遮罩 -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <!-- 侧边栏 -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <img src="assets/icon.png" alt="Logo">
+      </div>
+      <h2>剪映入门</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">学习</div>
+      <button class="nav-item" onclick="goHome()">
+        <span class="nav-icon">🏠</span> 课程首页
+      </button>
+      <button class="nav-item" onclick="goToChapter(1)">
+        <span class="nav-icon">1</span> 第1章 · 初识剪映
+      </button>
+      <button class="nav-item" id="navCh2v" onclick="goToChapter(2)">
+        <span class="nav-icon">2</span> 第2章 · 让视频好看
+      </button>
+      <button class="nav-item" id="navCh3v" onclick="goToChapter(3)">
+        <span class="nav-icon">3</span> 第3章 · 让视频出彩
+      </button>
+      <button class="nav-item" id="navCh4v" onclick="goToChapter(4)">
+        <span class="nav-icon">4</span> 第4章 · 实战练习
+      </button>
+      <button class="nav-item" id="navCh5v" onclick="goToChapter(5)">
+        <span class="nav-icon">5</span> 第5章 · 进阶技巧
+      </button>
+      <div class="nav-section-title">设置</div>
+      <button class="nav-item" onclick="resetProgress()">
+        <span class="nav-icon">🔄</span> 重置学习进度
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <img src="assets/icon.png" alt="icon" style="width:18px;vertical-align:middle;margin-right:4px;">剪映零基础入门 v1.0
+    </div>
+  </div>
+
+  <!-- 顶部导航栏 -->
+  <header class="video-top-bar">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <button class="date-btn" id="dateBtn" onclick="toggleCalendar()">--</button>
+    <h1 id="videoTitle">课程标题</h1>
+    <div style="width:36px;flex-shrink:0;"></div>
+  </header>
+
+  <!-- 视频播放区域 -->
+  <div class="video-container">
+    <video id="mainVideo" controls preload="auto">
+      您的浏览器不支持视频播放
+    </video>
+  </div>
+
+  <!-- 课程说明 -->
+  <div class="video-info">
+    <h2 id="videoName">课程名称</h2>
+    <p id="videoDesc" class="video-desc">课程描述</p>
+    <div class="video-tags">
+      <span id="videoTime" class="tag">⏱ -- 分钟</span>
+      <span id="videoStatus" class="tag">未开始</span>
+    </div>
+  </div>
+
+  <!-- 课程简介 -->
+  <div class="video-intro" id="videoIntro">
+    <h3>📖 课程简介</h3>
+    <p id="videoIntroText"></p>
+  </div>
+
+  <!-- 操作按钮 -->
+  <div class="video-actions">
+    <button class="btn-primary" onclick="markComplete()">✅ 学完了</button>
+    <button class="btn-secondary" onclick="goNext()">下一章 →</button>
+  </div>
+
+  <!-- 完成弹窗 -->
+  <div class="complete-overlay" id="completeOverlay">
+    <div class="complete-modal">
+      <div class="emoji">🎊</div>
+      <h3>恭喜完成本章！</h3>
+      <p>下一章已解锁，继续加油！</p>
+      <button onclick="closeCompleteModal()">继续学习</button>
+    </div>
+  </div>
+
+  <!-- 日历弹窗 -->
+  <div class="calendar-overlay" id="calendarOverlay" onclick="closeCalendarOnOverlay(event)">
+    <div class="calendar-modal">
+      <div class="calendar-header">
+        <button class="cal-nav-btn" onclick="changeMonth(-1)">‹</button>
+        <span id="calendarTitle">2026年5月</span>
+        <button class="cal-nav-btn" onclick="changeMonth(1)">›</button>
+      </div>
+      <div class="calendar-weekdays">
+        <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+      </div>
+      <div class="calendar-days" id="calendarDays">
+        <!-- JS渲染 -->
+      </div>
+      <div class="calendar-footer">
+        <button class="cal-today-btn" onclick="goToToday()">回到今天</button>
+        <button class="cal-open-btn" onclick="openSystemCalendar()">📅 打开手机日历</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js?v=3" charset="UTF-8"></script>
+</body>
+</html>

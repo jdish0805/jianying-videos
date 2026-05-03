@@ -1,0 +1,762 @@
+/* ===== 海洋蓝风格 - 浅色简洁主题 ===== */
+* {
+  margin:0; padding:0; box-sizing:border-box;
+}
+
+:root {
+  --bg: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-hover: #eeeeee;
+  --text-main: #1a1a1a;
+  --text-muted: #888888;
+  --accent: #1a1a1a;
+  --accent-light: #f0f0f0;
+  --accent-dark: #000000;
+  --border: #e0e0e0;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  --radius: 12px;
+}
+
+body {
+  font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* ===== 顶部导航栏 ===== */
+.top-bar {
+  background: var(--bg);
+  border-bottom:1px solid var(--border);
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.menu-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  transition: background 0.2s;
+}
+
+.menu-btn:hover {
+  background: var(--bg-hover);
+}
+
+.top-bar h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-right: 36px;
+}
+
+/* ===== 侧边栏 ===== */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 200;
+}
+
+.sidebar-overlay.open {
+  display: block;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0; left: -260px;
+  width: 260px;
+  height: 100vh;
+  background: var(--bg);
+  z-index: 201;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-header {
+  padding: 20px 16px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sidebar-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar-header h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 8px;
+  overflow-y: auto;
+}
+
+.nav-section-title {
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 12px 12px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-main);
+  transition: background 0.15s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.nav-item:hover {
+  background: var(--bg-hover);
+}
+
+.nav-item.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.sidebar-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ===== 主内容区 ===== */
+.main-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+/* ===== 欢迎区域 ===== */
+.welcome {
+  text-align: center;
+  padding: 32px 16px 24px;
+}
+
+.welcome-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  margin: 0 auto 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.welcome-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.welcome h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--accent-dark);
+}
+
+.welcome p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== 进度条 ===== */
+.progress-section {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-header span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--bg-hover);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #1a1a1a;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+/* ===== 章节卡片 ===== */
+.chapter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chapter-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--card-shadow);
+}
+
+.chapter-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(59,130,246,0.12);
+}
+
+.chapter-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chapter-card.locked:hover {
+  border-color: var(--border);
+  box-shadow: var(--card-shadow);
+}
+
+.chapter-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.chapter-card.locked .chapter-num {
+  background: #ccc;
+}
+
+.chapter-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.chapter-info h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.chapter-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chapter-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.chapter-time {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.chapter-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.badge-done {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.badge-locked {
+  background: var(--bg-hover);
+  color: var(--text-muted);
+}
+
+.badge-ready {
+  background: #e8e8e8;
+  color: #333333;
+}
+
+.chapter-arrow {
+  font-size: 18px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ===== 视频播放页 ===== */
+.video-page {
+  background: var(--bg);
+}
+
+.video-top-bar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.back-btn {
+  border: none;
+  background: none;
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.back-btn:hover {
+  background: var(--bg-hover);
+}
+
+.video-top-bar h1 {
+  font-size: 15px;
+  font-weight: 600;
+  flex: 1;
+  text-align: center;
+}
+
+.video-top-bar .date-btn {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.video-top-bar .date-btn:active {
+  background: var(--bg-hover);
+}
+
+/* ===== 视频容器 ===== */
+.video-container {
+  background: #000;
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ===== 视频信息 ===== */
+.video-info {
+  padding: 20px 16px 8px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.video-info h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--accent-dark);
+}
+
+.video-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.video-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+}
+
+.tag-done {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+/* ===== 课程简介 ===== */
+.video-intro {
+  max-width: 720px;
+  margin: 0 auto 20px;
+  padding: 16px 16px;
+}
+
+.video-intro h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent-dark);
+  margin-bottom: 10px;
+}
+
+.video-intro p {
+  font-size: 13px;
+  color: var(--text-main);
+  line-height: 1.8;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ===== 操作按钮 ===== */
+.video-actions {
+  padding: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  padding: 12px 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text-main);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-hover);
+}
+
+/* ===== 完成弹窗 ===== */
+.complete-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+}
+
+.complete-overlay.show {
+  display: flex;
+}
+
+.complete-modal {
+  background: var(--bg);
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  max-width: 300px;
+  width: 85%;
+  animation: popIn 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.complete-modal .emoji {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.complete-modal h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: var(--accent-dark);
+}
+
+.complete-modal p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.complete-modal button {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 10px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-size: 13px;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+  white-space: nowrap;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ===== 内置日历 ===== */
+.calendar-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 400;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-overlay.show {
+  display: flex;
+}
+
+.calendar-modal {
+  background: var(--bg);
+  border-radius: 16px;
+  padding: 20px;
+  width: 320px;
+  max-width: 92vw;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  animation: popIn 0.25s ease;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+#calendarTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.cal-nav-btn {
+  background: none;
+  border: 1px solid var(--border);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 8px;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+.cal-nav-btn:hover {
+  background: var(--bg-hover);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.calendar-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 13px;
+  aspect-ratio: 1;
+  cursor: default;
+  color: var(--text-main);
+}
+
+.calendar-day.empty {
+  cursor: default;
+}
+
+.calendar-day.today {
+  background: #1a1a1a;
+  color: #fff;
+  font-weight: 700;
+}
+
+.calendar-day.other-month {
+  color: #ccc;
+}
+
+.calendar-footer {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+}
+
+.cal-today-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.cal-today-btn:active {
+  background: var(--bg-hover);
+}
+
+.cal-open-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.cal-open-btn:active {
+  background: var(--bg-hover);
+}
+
+/* ===== 响应式 ===== */
+@media (min-width: 600px) {
+  .main-content { padding: 32px 24px 60px; }
+  .welcome { padding: 48px 16px 32px; }
+}
