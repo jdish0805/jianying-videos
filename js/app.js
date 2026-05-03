@@ -1,11 +1,13 @@
 // ===== 课程数据 =====
+const BASE_VIDEO_URL = 'https://raw.githubusercontent.com/jdish0805/jianying-videos/master/videos/';
+
 const chapters = [
   {
     id: 1,
     title: '初识剪映',
     desc: '认识界面 · 导入素材 · 基础操作',
     time: 8,
-    video: 'videos/1.mp4',
+    video: BASE_VIDEO_URL + '1.mp4',
     poster: '',
     intro: '本章带你第一次打开剪映，认识整个工作界面。你会学到：如何新建项目、如何把手机里的照片和视频导入到剪映中、认识时间轴（就是下面那条可以剪切视频的地方）、学会分割视频、删除片段、移动片段。学完这一章，你就能独立完成一个最基础的视频剪辑了。'
   },
@@ -14,7 +16,7 @@ const chapters = [
     title: '让视频好看',
     desc: '背景音乐 · 字幕 · 转场 · 滤镜',
     time: 10,
-    video: 'videos/2.mp4',
+    video: BASE_VIDEO_URL + '2.mp4',
     poster: '',
     intro: '本章学习剪映的主轴、时间线及时间线工作栏的使用方法。你将了解时间线的布局逻辑，掌握如何在时间线上排列和编辑视频片段，以及主轴与时间线工作栏的各项功能操作。'
   },
@@ -23,7 +25,7 @@ const chapters = [
     title: '让视频出彩',
     desc: '贴纸特效 · 关键帧 · 导出设置',
     time: 12,
-    video: 'videos/3.mp4',
+    video: BASE_VIDEO_URL + '3.mp4',
     poster: '',
     intro: '本章学习素材工作栏的使用方法，以及素材的调整技巧。你将学会如何在素材工作栏中管理视频、音频、文字等素材，并掌握对素材进行裁剪、分割、排序等调整操作。'
   },
@@ -32,7 +34,7 @@ const chapters = [
     title: '实战练习',
     desc: '做一个完整15秒短视频',
     time: 10,
-    video: 'videos/4.mp4',
+    video: BASE_VIDEO_URL + '4.mp4',
     poster: '',
     intro: '本章学习素材画面的调整技巧，以及轨道吸附功能的使用。你将学会如何调整视频画面的位置、大小、旋转角度，并掌握轨道吸附功能，让视频片段之间精准对齐，剪辑更高效。'
   },
@@ -41,7 +43,7 @@ const chapters = [
     title: '进阶技巧',
     desc: '更多剪映高级功能',
     time: 15,
-    video: 'videos/5.mp4',
+    video: BASE_VIDEO_URL + '5.mp4',
     poster: '',
     intro: '本章学习自动抠图功能和关键帧动画的使用方法。你将学会如何一键智能抠除视频背景，以及如何使用关键帧让画面产生位移、缩放、旋转等动态效果，让视频更生动。'
   }
@@ -153,18 +155,15 @@ function initVideoPage() {
     introEl.textContent = ch.intro;
   }
 
-  // 设置视频源
+  // 设置视频源（使用GitHub直链）
   const videoEl = document.getElementById('mainVideo');
   if (ch.video) {
-    // 直接用绝对路径，避免相对路径解析问题
-    var baseUrl = window.location.origin;
-    var fullSrc = baseUrl + '/' + ch.video;
-    console.log('视频路径:', fullSrc);
-    videoEl.src = fullSrc;
+    console.log('视频路径:', ch.video);
+    videoEl.src = ch.video;
     videoEl.load();
     videoEl.onerror = function() {
       var err = videoEl.error;
-      document.getElementById('videoIntro').innerHTML += '<p style="color:#e74c3c;background:#fee;padding:8px;border-radius:6px;font-size:12px;">⚠️ 视频加载失败，错误代码：' + (err ? err.code : '未知') + '<br>尝试加载的路径：' + fullSrc + '</p>';
+      document.getElementById('videoIntro').innerHTML += '<p style="color:#e74c3c;background:#fee;padding:8px;border-radius:6px;font-size:12px;">⚠️ 视频加载失败，请检查网络连接<br>视频路径：' + ch.video + '</p>';
     };
   } else {
     videoEl.outerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:200px;color:#aaa;font-size:14px;padding:40px;text-align:center;background:#f5f5f5;border-radius:8px;">📹 视频即将上线，敬请期待<br><small style="color:#666;display:block;margin-top:8px;">第' + id + '章视频制作中</small></div>';
